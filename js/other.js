@@ -81,122 +81,40 @@ $(document).on('mousemove', function(e){
 
 
 
+function swipeHandler(event) {
+    $("front").addClass("active");
+    $("front").removeClass("unactive");
+    $(".right").removeClass("inactive");
+    $(".left").addClass("inactive");
 
+    $(".left h1").addClass("hide");
+    $(".right h1").addClass("unhide");
+    $(".left h1").removeClass("unhide");
+    $(".right h1").removeClass("hide");
 
+    $("#white, .left button, .left .bar").addClass("hide");
+    $("#black, .right button, .right .bar").addClass("unhide");
 
-
-
+    $("#white, .left button, .left .bar").removeClass("unhide");
+    $("#black, .right button, .right .bar").removeClass("hide");
+}
 
 $(function(){
   $( "front" ).on( "swipeleft", swipeHandler );
   $( ".right" ).click(swipeHandler);
-
-  function swipeHandler(event) {
-    $("front").addClass("active");
- $("front").removeClass("unactive");
-$(".right").removeClass("inactive");
-$(".left").addClass("inactive");
-
-$(".left h1").addClass("hide");
-$(".right h1").addClass("unhide");
-$(".left h1").removeClass("unhide");
-$(".right h1").removeClass("hide");
-
-$("#white, .left button, .left .bar").addClass("hide");
-$("#black, .right button, .right .bar").addClass("unhide");
-
-$("#white, .left button, .left .bar").removeClass("unhide");
-$("#black, .right button, .right .bar").removeClass("hide");
-
-
-  }
-});
-
-
-$(function(){
   $( "front" ).on( "swiperight", swipeHandler );
- $( ".left" ).click(swipeHandler);
-  function swipeHandler( event ){
-   $("front").removeClass("active");
-    $("front").addClass("unactive");
-    $(".right").addClass("inactive");
-    $(".left").removeClass("inactive");
-
-    $(".left h1").removeClass("hide");
-    $(".right h1").removeClass("unhide");
-$(".right h1").addClass("hide");
-$(".left h1").addClass("unhide");
-
-
-
-$("#black, .right button, .right .bar").addClass("hide");
-$("#white, .left button, .left .bar").addClass("unhide");
-
-$("#black, .right button, .right .bar").removeClass("unhide");
-$("#white, .left button, .left .bar").removeClass("hide");
-
-
-
-
-  }
-});
-
-
-
-
-
-
-
-
-
-$(document).keydown(
+  $( ".left" ).click(swipeHandler);
+  $(document).keydown(
     function(e)
     {    
-        if (e.keyCode == 39) {      
-
-$("front").addClass("active");
- $("front").removeClass("unactive");
-$(".right").removeClass("inactive");
-$(".left").addClass("inactive");
-
-$(".left h1").addClass("hide");
-$(".right h1").addClass("unhide");
-$(".left h1").removeClass("unhide");
-$(".right h1").removeClass("hide");
-
-$("#white, .left button, .left .bar").addClass("hide");
-$("#black, .right button, .right .bar").addClass("unhide");
-
-$("#white, .left button, .left .bar").removeClass("unhide");
-$("#black, .right button, .right .bar").removeClass("hide");
-
-   
-        }
-        if (e.keyCode == 37) {      
-
-      $("front").removeClass("active");
-    $("front").addClass("unactive");
-    $(".right").addClass("inactive");
-    $(".left").removeClass("inactive");
-
-    $(".left h1").removeClass("hide");
-    $(".right h1").removeClass("unhide");
-$(".right h1").addClass("hide");
-$(".left h1").addClass("unhide");
-
-
-
-$("#black, .right button, .right .bar").addClass("hide");
-$("#white, .left button, .left .bar").addClass("unhide");
-
-$("#black, .right button, .right .bar").removeClass("unhide");
-$("#white, .left button, .left .bar").removeClass("hide");
-
-
-
+        if (e.keyCode == 39 || e.keyCode == 37) {      
+            swipeHandler(e)
         }
     }
-);
+);  
+});
+
+
 
 
 
